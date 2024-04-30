@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+interface Interactable{
+    public void Interact();
+}
+
 public class ObjectSelection : MonoBehaviour
 {
     private RaycastHit hit;
@@ -9,12 +13,6 @@ public class ObjectSelection : MonoBehaviour
 
     public Material outlineMat;
     public float maxDistance = 2f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update(){
@@ -29,13 +27,13 @@ public class ObjectSelection : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         // Si golpea con algo
-        if(Physics.Raycast(ray, out hit)){
+        if(Physics.Raycast(ray, out hit, maxDistance)){
             highlight = hit.transform;
 
             float dist2object = Vector3.Distance(highlight.position, transform.position);
 
             // Si está marcado como "Interactable" y estamos suficientemente cerca
-            if(highlight.CompareTag("Interactable") && dist2object < maxDistance){
+            if(highlight.CompareTag("Interactable") && dist2object <= maxDistance){
                 // Si tiene outline se activa
                 if(highlight.gameObject.GetComponent<Outline>() != null){
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
@@ -48,9 +46,9 @@ public class ObjectSelection : MonoBehaviour
                     highlight.gameObject.GetComponent<Outline>().OutlineWidth = outlineMat.GetFloat("_OutlineWidth");
                 }
 
-                // ACCIÓN A REALIZAR AL PULSAR EL BOTÓN
-                if(Input.GetMouseButtonDown(0)){
-                    Debug.Log(highlight.gameObject.name);
+                // Al pulsar el botón del ratón se obtiene su componente de interacción y se llama a su función Interact
+                if(Input.GetMouseButtonDown(0) && highlight.gameObject.TryGetComponent(out Interactable interactObj)){
+                    interactObj.Interact();
                 }
             }
             // Si no se elimina la referencia al objeto golpeado
