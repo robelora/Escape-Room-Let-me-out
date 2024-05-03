@@ -8,7 +8,12 @@ public class PuzzleTrigger : MonoBehaviour, Interactable
     public UnityEvent interactAction;
 
     public void Interact(){
+        transform.gameObject.tag = "Untagged";
         interactAction.Invoke();
+    }
+
+    public void Salir(){
+        transform.gameObject.tag = "Interactable";
     }
 
 }
