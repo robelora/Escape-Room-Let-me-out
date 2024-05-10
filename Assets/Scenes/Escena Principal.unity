@@ -29991,7 +29991,6 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -30073,20 +30072,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2095216467}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45ccf5cba8a30e44ebe6b82565cfe3b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensitivity: 200
-  playerBody: {fileID: 2095216467}
 --- !u!1 &1015151464
 GameObject:
   m_ObjectHideFlags: 0
@@ -30192,7 +30177,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2095216467}
   - component: {fileID: 2095216466}
+  - component: {fileID: 2095216469}
   - component: {fileID: 2095216468}
+  - component: {fileID: 2095216470}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -30253,17 +30240,84 @@ MonoBehaviour:
   m_GameObject: {fileID: 2095216465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 506fc16f88f48e1479edd0ac74f7de05, type: 3}
+  m_Script: {fileID: 11500000, guid: b23a029cb8a064b4cbe76dd8b0ac3e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 2095216466}
-  speed: 6
-  gravity: -9.81
   groundCheck: {fileID: 1015151465}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  playerCam: {fileID: 963194227}
+  playerBody: {fileID: 2095216467}
+--- !u!114 &2095216469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095216465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 40b1fc4f3eea7ab47af8233c5d9048ae, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 77865c5f-e381-47ff-a34c-753d912ad54c
+    m_ActionName: Explore/PlayerMove[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 053331c9-8dfd-4f4b-802f-6eb45e57b470
+    m_ActionName: Explore/CamMove[/XInputControllerWindows/rightStick,/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2095216470}
+        m_TargetAssemblyTypeName: ObjectSelection, Assembly-CSharp
+        m_MethodName: Pulsar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7d688c0d-6acf-44f1-80db-a5ce3e7a6a01
+    m_ActionName: Explore/Interact[/XInputControllerWindows/buttonSouth,/Mouse/leftButton]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard
+  m_DefaultActionMap: Explore
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &2095216470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095216465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372d0b80e1155d543b9c98b9ff72d9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMat: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
+  maxDistance: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

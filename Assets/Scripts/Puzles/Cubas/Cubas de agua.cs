@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class Cubasdeagua : MonoBehaviour
 {
@@ -32,13 +33,17 @@ public class Cubasdeagua : MonoBehaviour
         if(isActive){
             if(highlight != null){highlight = null;}
             if(selected != null){selected.gameObject.GetComponent<Outline>().enabled = true;}
+        }
+    }
 
+    public void Activar(InputAction.CallbackContext callbackContext){
+        if(callbackContext.performed && isActive){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if(Physics.Raycast(ray, out hit)){
                 highlight = hit.transform;
 
-                if(highlight.CompareTag("Interactable") && Input.GetMouseButtonDown(0)){
+                if(highlight.CompareTag("Interactable")){
                     if(selected == null){
                         selected = hit.transform;
                         selected.gameObject.GetComponent<Outline>().enabled = true;
@@ -68,16 +73,18 @@ public class Cubasdeagua : MonoBehaviour
                     }
                 }
             }
+        }
+    }
 
-            if(Input.GetMouseButtonDown(1)){
-                for(int i = 0; i < 3; i++){
+    public void Salir(){
+        if(isActive){
+            for(int i = 0; i < 3; i++){
                     Valorescubas cuba = transform.GetChild(i).transform.gameObject.GetComponent<Valorescubas>();
                     cuba.valorActual = cuba.valorInicial;
                     texto[i].text = cuba.valorInicial.ToString();
                 }
-                SwitchActive();
-                exitPuzzle.Invoke();
-            }
+            SwitchActive();
+            exitPuzzle.Invoke();
         }
     }
 
