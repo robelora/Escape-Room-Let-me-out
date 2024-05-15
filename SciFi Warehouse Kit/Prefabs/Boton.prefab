@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3647468785584700859}
-  - component: {fileID: 6462021553734324610}
+  - component: {fileID: -4571929068738105946}
   m_Layer: 0
   m_Name: Boton
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 8103224096411483065}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6462021553734324610
+--- !u!114 &-4571929068738105946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c890e74dc9ec1a4e889a13fb15977c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puerta: {fileID: 0}
 --- !u!1 &7517483056327207830
 GameObject:
   m_ObjectHideFlags: 0

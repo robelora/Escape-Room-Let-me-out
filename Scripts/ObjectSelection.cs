@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 interface Interactable{
     public void Interact();
@@ -13,6 +15,15 @@ public class ObjectSelection : MonoBehaviour
 
     public Material outlineMat;
     public float maxDistance = 2f;
+
+    private PlayerInput playerInput;
+    private bool interaction = false;
+
+    public UnityEvent exitPuzzle;
+
+    void Start(){
+        playerInput = GetComponent<PlayerInput>();
+    }
 
     // Update is called once per frame
     void Update(){
@@ -47,7 +58,8 @@ public class ObjectSelection : MonoBehaviour
                 }
 
                 // Al pulsar el botón del ratón se obtiene su componente de interacción y se llama a su función Interact
-                if(Input.GetMouseButtonDown(0) && highlight.gameObject.TryGetComponent(out Interactable interactObj)){
+                if(interaction && highlight.gameObject.TryGetComponent(out Interactable interactObj)){
+                    playerInput.SwitchCurrentActionMap("Puzzle");
                     interactObj.Interact();
                 }
             }
@@ -55,6 +67,21 @@ public class ObjectSelection : MonoBehaviour
             else{
                 highlight = null;
             }
+        }
+
+        interaction = false;
+    }
+
+    public void Activar(InputAction.CallbackContext callbackContext){
+        if(callbackContext.performed){
+            interaction = true;
+        }
+    }
+
+    public void Salir(InputAction.CallbackContext callbackContext){
+        if(callbackContext.performed && playerInput.currentActionMap == playerInput.actions.FindActionMap("Puzzle")){
+            playerInput.SwitchCurrentActionMap("Explore");
+            exitPuzzle.Invoke();
         }
     }
 }
