@@ -1,13 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class AbrirPrimera : MonoBehaviour
+public class AbrirPuerta : MonoBehaviour, Interactable
 {
-    bool puerta1 = false;
-    bool puerta2 = false;
-
-    GameObject p1,p2,b1,b2;
+    bool puerta = false;
+    public GameObject p;
+ 
+    public void Interact(){
+        transform.gameObject.tag = "Untagged";
+        if(puerta==false){
+            p.SetActive(false);
+            puerta=true;        
+        }  
+    }  
+/*
+GameObject p1,p2,b1,b2;
 
     void Start(){
         b1=GameObject.Find("Boton1");
@@ -15,12 +24,11 @@ public class AbrirPrimera : MonoBehaviour
         p1=GameObject.Find("Puerta1");
         p2=GameObject.Find("Puerta2");
     }
-
     void Update(){
         Abrirpuerta();
     }
     
-        
+      
     public void Abrirpuerta(){
         if(Input.GetKeyDown(KeyCode.E)){
             if(puerta1==false){
@@ -37,6 +45,6 @@ public class AbrirPrimera : MonoBehaviour
                 else{}
             }
         }
-    }
+    }*/
 
 }
