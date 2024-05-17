@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AbrirPuertaLaberinto : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class AbrirPuertaLaberinto : MonoBehaviour
     }
 
     void Abrirpuerta(){
-        if(Input.GetKeyDown(KeyCode.E)){
+        if(Keyboard.current.eKey.wasPressedThisFrame){
             if(puerta1==0){
                 b1.transform.tag="Untagged";
                 puerta1++;

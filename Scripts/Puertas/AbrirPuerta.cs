@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class AbrirPrimera : MonoBehaviour
+public class AbrirPuerta : MonoBehaviour
 {
     bool puerta1 = false;
     bool puerta2 = false;
@@ -22,7 +23,7 @@ public class AbrirPrimera : MonoBehaviour
     
         
     public void Abrirpuerta(){
-        if(Input.GetKeyDown(KeyCode.E)){
+        if(Keyboard.current.eKey.wasPressedThisFrame){
             if(puerta1==false){
                 p1.SetActive(false);
                 puerta1=true;
