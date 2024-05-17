@@ -35,7 +35,7 @@ public class ObjectSelection : MonoBehaviour
         }
 
         // Se lanza un rayo desde la posición del ratón (el centro de la pantalla)
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         // Si golpea con algo
         if(Physics.Raycast(ray, out hit, maxDistance)){

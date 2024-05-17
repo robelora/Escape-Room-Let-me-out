@@ -25,7 +25,7 @@ public class NewInputMovement : MonoBehaviour
     private float mouseCurrentSensitivity;
     private float xRotation = 0f;
 
-    public Camera playerCam;
+    public Transform playerCam;
     public Transform playerBody;
 
     // Start is called before the first frame update
