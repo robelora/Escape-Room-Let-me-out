@@ -44,17 +44,17 @@ namespace NavKeypad
         private bool accessWasGranted = false;
         private bool isActive;
 
-        public void SwitchActive(){
-        for(int i = 0; i < 3; i++){
-            if(!isActive){
-                transform.GetChild(i).transform.gameObject.tag = "Interactable";
+        /* public void SwitchActive(){
+            for(int i = 0; i < 3; i++){
+                if(!isActive){
+                    transform.GetChild(i).transform.gameObject.tag = "Interactable";
+                }
+                else{
+                    transform.GetChild(i).transform.gameObject.tag = "Untagged";
+                }
             }
-            else{
-                transform.GetChild(i).transform.gameObject.tag = "Untagged";
-            }
-        }
-        isActive = !isActive;
-    }
+            isActive = !isActive;
+        } */
 
         private void Awake()
         {

@@ -48231,6 +48231,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate Long (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4921675115321883647, guid: e2fdcaac11701fe438724a8a8b3a76c5, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: 8220780882054941164, guid: e2fdcaac11701fe438724a8a8b3a76c5, type: 3}
       propertyPath: m_RootOrder
       value: 25
