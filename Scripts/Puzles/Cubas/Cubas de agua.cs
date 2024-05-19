@@ -39,7 +39,7 @@ public class Cubasdeagua : MonoBehaviour
     void Update()
     {
         if(isActive){
-            if(Gamepad.current.leftStick.left.wasPressedThisFrame || Keyboard.current.aKey.wasPressedThisFrame){
+            if(/*Gamepad.current.leftStick.left.wasPressedThisFrame || */Keyboard.current.aKey.wasPressedThisFrame){
                 if(selected != highlight){highlight.gameObject.GetComponent<Outline>().enabled = false;}
                 if(cubaActual == 0){cubaActual = 2;}
                 else{cubaActual--;}
@@ -47,7 +47,7 @@ public class Cubasdeagua : MonoBehaviour
                 setOutline(highlight);
             }
 
-            if(Gamepad.current.leftStick.right.wasPressedThisFrame || Keyboard.current.dKey.wasPressedThisFrame){
+            if(/* Gamepad.current.leftStick.right.wasPressedThisFrame || */ Keyboard.current.dKey.wasPressedThisFrame){
                 if(selected != highlight){highlight.gameObject.GetComponent<Outline>().enabled = false;}
                 cubaActual = (cubaActual+1) % 3;
                 highlight = transform.GetChild(cubaActual).transform;
