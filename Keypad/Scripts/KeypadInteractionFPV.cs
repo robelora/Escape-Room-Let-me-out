@@ -8,7 +8,7 @@ public class KeypadInteractionFPV : MonoBehaviour
 
 {
 
-    private void Update()
+    /* private void Update()
     {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -23,13 +23,13 @@ public class KeypadInteractionFPV : MonoBehaviour
                 }
             }
         }
-    }
+    } */
 
     public void Activar(InputAction.CallbackContext callbackContext){
 
         
         if(callbackContext.performed){
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            var ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
              if (Physics.Raycast(ray, out var hit))
             {
                 if (hit.collider.TryGetComponent(out KeypadButton keypadButton))

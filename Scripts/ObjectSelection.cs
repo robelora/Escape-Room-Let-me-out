@@ -84,4 +84,8 @@ public class ObjectSelection : MonoBehaviour
             exitPuzzle.Invoke();
         }
     }
+
+    public void PuzleCompletado(){
+        playerInput.SwitchCurrentActionMap("Explore");
+    }
 }
