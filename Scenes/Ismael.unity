@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b5f666c020274ea53d26995643092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  imgsBarrasLlenado: []
   texto:
   - {fileID: 1602559230}
   - {fileID: 1099991946}
@@ -300,6 +301,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  completePuzzle:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &172902678
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +433,18 @@ MonoBehaviour:
       - m_Target: {fileID: 440781084}
         m_TargetAssemblyTypeName: MonedaTrigger, Assembly-CSharp
         m_MethodName: Completado
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2113376074}
+        m_TargetAssemblyTypeName: ObjectSelection, Assembly-CSharp
+        m_MethodName: PuzleCompletado
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -636,6 +652,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   puzzleCam: {fileID: 675553729}
+  puntero: {fileID: 0}
 --- !u!1 &403162800
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +805,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  puzzleCam: {fileID: 0}
 --- !u!65 &440781086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -889,6 +905,7 @@ GameObject:
   - component: {fileID: 507916107}
   - component: {fileID: 507916106}
   - component: {fileID: 507916105}
+  - component: {fileID: 507916108}
   m_Layer: 0
   m_Name: moneda3
   m_TagString: Untagged
@@ -982,6 +999,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507916103}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &507916108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507916103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503e7b96f1a8d7e428d9c0102dc00e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posicionActual: 2
+  posicionCorrecta: 3
 --- !u!1 &510746940
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1025,7 @@ GameObject:
   - component: {fileID: 510746944}
   - component: {fileID: 510746943}
   - component: {fileID: 510746942}
+  - component: {fileID: 510746945}
   m_Layer: 0
   m_Name: moneda2
   m_TagString: Untagged
@@ -1087,6 +1119,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510746940}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &510746945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510746940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503e7b96f1a8d7e428d9c0102dc00e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posicionActual: 1
+  posicionCorrecta: 2
 --- !u!1 &543056671
 GameObject:
   m_ObjectHideFlags: 3
@@ -1215,6 +1261,7 @@ GameObject:
   - component: {fileID: 712975878}
   - component: {fileID: 712975877}
   - component: {fileID: 712975876}
+  - component: {fileID: 712975879}
   m_Layer: 0
   m_Name: moneda4
   m_TagString: Untagged
@@ -1308,6 +1355,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712975874}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &712975879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712975874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503e7b96f1a8d7e428d9c0102dc00e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posicionActual: 3
+  posicionCorrecta: 1
 --- !u!1 &729431850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1381,7 @@ GameObject:
   - component: {fileID: 729431854}
   - component: {fileID: 729431853}
   - component: {fileID: 729431852}
+  - component: {fileID: 729431855}
   m_Layer: 0
   m_Name: moneda5
   m_TagString: Untagged
@@ -1413,6 +1475,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729431850}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &729431855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729431850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503e7b96f1a8d7e428d9c0102dc00e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posicionActual: 4
+  posicionCorrecta: 0
 --- !u!1 &730836562
 GameObject:
   m_ObjectHideFlags: 0
@@ -4065,6 +4141,7 @@ GameObject:
   - component: {fileID: 1686675131}
   - component: {fileID: 1686675130}
   - component: {fileID: 1686675129}
+  - component: {fileID: 1686675132}
   m_Layer: 0
   m_Name: moneda1
   m_TagString: Untagged
@@ -4158,6 +4235,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686675127}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1686675132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686675127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503e7b96f1a8d7e428d9c0102dc00e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posicionActual: 0
+  posicionCorrecta: 4
 --- !u!1 &1690212735
 GameObject:
   m_ObjectHideFlags: 0

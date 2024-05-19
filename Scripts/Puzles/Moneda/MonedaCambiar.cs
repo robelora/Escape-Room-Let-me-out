@@ -8,25 +8,25 @@ using UnityEngine.InputSystem;
 
 public class MonedaCambiar : MonoBehaviour
 {
-    private Transform highlight;
-    private Transform selected;
-    public Transform m1,m2,m3,m4,m5;
+    private GameObject highlight;
+    private GameObject selected;
+    public GameObject m1,m2,m3,m4,m5;
     private int monedaActual;
     private bool isActive;
-    private bool completado=false;
     public Material outlineMatHighlight;
     public Material outlineMatSelected;
     public UnityEvent exitPuzzle;
     public UnityEvent completedPuzzle;
+    private valoresMoneda moneda1,moneda2;
     void Start()
     {
         monedaActual = 0;
-        highlight = transform.GetChild(monedaActual).transform;
-        m1=transform.GetChild(0).transform; //posicion=1
-        m2=transform.GetChild(1).transform;
-        m3=transform.GetChild(2).transform;
-        m4=transform.GetChild(3).transform;
-        m5=transform.GetChild(4).transform;
+        highlight = transform.GetChild(monedaActual).gameObject;
+        m1=transform.GetChild(0).gameObject; //serpiente
+        m2=transform.GetChild(1).gameObject;
+        m3=transform.GetChild(2).gameObject;
+        m4=transform.GetChild(3).gameObject;
+        m5=transform.GetChild(4).gameObject;
     }
 
     // Update is called once per frame
@@ -37,20 +37,20 @@ public class MonedaCambiar : MonoBehaviour
                 if(selected != highlight){highlight.gameObject.GetComponent<Outline>().enabled = false;}
                 if(monedaActual == 0){monedaActual = 4;}
                 else{monedaActual--;}
-                highlight = transform.GetChild(monedaActual).transform;
+                highlight = transform.GetChild(monedaActual).gameObject;
                 setOutline(highlight);
             }
 
             if(/* Gamepad.current.leftStick.right.wasPressedThisFrame || */ Keyboard.current.dKey.wasPressedThisFrame){
                 if(selected != highlight){highlight.gameObject.GetComponent<Outline>().enabled = false;}
                 monedaActual = (monedaActual+1) % 5;
-                highlight = transform.GetChild(monedaActual).transform;
+                highlight = transform.GetChild(monedaActual).gameObject;
                 setOutline(highlight);
             }
         }
     }
 
-     public void setOutline(Transform highlight){
+     public void setOutline(GameObject highlight){
         if(highlight.gameObject.GetComponent<Outline>() != null){
             highlight.gameObject.GetComponent<Outline>().enabled = true;
         }
@@ -84,41 +84,59 @@ public class MonedaCambiar : MonoBehaviour
                 selected = null;
             }
             else{
-                int index1 = highlight.GetSiblingIndex();
-                int index2 = selected.GetSiblingIndex();
-                Vector3 posicion = highlight.position;
-                highlight.position=selected.position;
-                selected.position=posicion;
-                highlight.SetSiblingIndex(index2);
-                selected.SetSiblingIndex(index1);
+                moneda1=selected.GetComponent<valoresMoneda>();
+                moneda2=highlight.GetComponent<valoresMoneda>();
+                int aux=moneda1.posicionActual;
+                moneda1.posicionActual=moneda2.posicionActual;
+                moneda2.posicionActual=aux;
+                int index1 = highlight.transform.GetSiblingIndex();
+                int index2 = selected.transform.GetSiblingIndex(); 
+                Vector3 posicion = highlight.transform.position;
+                highlight.transform.position=selected.transform.position;
+                selected.transform.position=posicion;
+                highlight.transform.SetSiblingIndex(index2);
+                selected.transform.SetSiblingIndex(index1);
+
                 
 
                 selected.gameObject.GetComponent<Outline>().OutlineColor = outlineMatHighlight.GetColor("_OutlineColor");
                 selected.gameObject.GetComponent<Outline>().enabled = false;
                 selected = null;
-            
+
+                //Debug.Log(m1==transform.GetChild(2).gameObject || m1==transform.GetChild(4).gameObject);
+                // Debug.Log(m2==transform.GetChild(3).gameObject);
+                //Debug.Log(m3==transform.GetChild(1).gameObject);
+                //Debug.Log(m4==transform.GetChild(2).gameObject || m4==transform.GetChild(4).gameObject);
+
             }
-            if((m1.position==transform.GetChild(2).transform.position || m1.position==transform.GetChild(4).transform.position)&&
-            (m2.position==transform.GetChild(3).transform.position)&&
-            (m3.position==transform.GetChild(1).transform.position)&&
-            (m4.position==transform.GetChild(2).transform.position || m4.position==transform.GetChild(4).transform.position)&&
-            (m5.position==transform.GetChild(0).transform.position)){
+            
+
+            
+            /* if((m1==transform.GetChild(2).gameObject || m1==transform.GetChild(4).gameObject)&&
+            (m2==transform.GetChild(3).gameObject)&&
+            (m3==transform.GetChild(1).gameObject)&&
+            (m4==transform.GetChild(2).gameObject || m4==transform.GetChild(4).gameObject)&&
+            (m5==transform.GetChild(0).gameObject)) */
+            if(m2.GetComponent<valoresMoneda>().posicionActual==m2.GetComponent<valoresMoneda>().posicionCorrecta &&
+            m3.GetComponent<valoresMoneda>().posicionActual==m3.GetComponent<valoresMoneda>().posicionCorrecta &&
+            m5.GetComponent<valoresMoneda>().posicionActual==m5.GetComponent<valoresMoneda>().posicionCorrecta){
                 Debug.Log("bienpicha");
-                completado=true;
-                Salir();
+                Completado();
             }
         }
     }
 
+    public void Completado(){
+        SwitchActive(); 
+        completedPuzzle.Invoke();
+    }
     public void Salir(){
             if(isActive){
             if(selected != null){
                 selected.gameObject.GetComponent<Outline>().enabled = false;
                 selected = null;
             }
-            SwitchActive();
-            if(completado)
-                completedPuzzle.Invoke();
+            SwitchActive();   
             exitPuzzle.Invoke();
             }
     }

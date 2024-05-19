@@ -8,20 +8,20 @@ using Cinemachine;
 public class MonedaTrigger : MonoBehaviour, Interactable
 {
     public UnityEvent interactAction;
-    public CinemachineVirtualCamera puzzleCam;
+    //public CinemachineVirtualCamera puzzleCam;
 
     public void Interact(){
         transform.gameObject.tag = "Untagged";
         interactAction.Invoke();  
-        puzzleCam.enabled = true;
+        //puzzleCam.enabled = true;
     }  
 
     public void Salir(){
         transform.gameObject.tag = "Interactable";
-        puzzleCam.enabled = false;
+        //puzzleCam.enabled = false;
     }
 
     public void Completado(){
-        puzzleCam.enabled = false;
+        //puzzleCam.enabled = false;
     }
 }
