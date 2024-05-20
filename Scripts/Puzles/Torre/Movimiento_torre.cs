@@ -127,15 +127,15 @@ public class Movimiento_torre : MonoBehaviour
                 puzleMovement = callbackContext.ReadValue<Vector2>();
 
                 // Hacia la izquierda
-                if(puzleMovement.x < -0.4f){
+                if(!isRotating && puzleMovement.x < -0.4f){
                     StartCoroutine(RotateOverTime(highlight, Vector3.up, rotationAngle));
                 }
                 // Hacia la derecha
-                else if(puzleMovement.x > 0.4f){
+                else if(!isRotating && puzleMovement.x > 0.4f){
                     StartCoroutine(RotateOverTime(highlight, Vector3.up, -rotationAngle));
                 }
                 // Hacia arriba
-                if(puzleMovement.y > 0.4f){
+                if(!isRotating && puzleMovement.y > 0.4f){
                     if (piso_seleccionado < transform.childCount - 1){
                         piso_seleccionado++;
                         highlight.gameObject.GetComponent<Outline>().enabled = false;
@@ -144,7 +144,7 @@ public class Movimiento_torre : MonoBehaviour
                     }
                 }
                 // Hacia abajo
-                else if(puzleMovement.y < -0.4f){
+                else if(!isRotating && puzleMovement.y < -0.4f){
                     if (piso_seleccionado > 0){
                         piso_seleccionado--;
                         highlight.gameObject.GetComponent<Outline>().enabled = false;
