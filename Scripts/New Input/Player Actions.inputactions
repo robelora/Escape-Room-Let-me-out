@@ -211,7 +211,7 @@
                     "id": "3b478350-01a6-44f2-a0e4-697a6d763783",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": true
                 },
                 {
@@ -355,7 +355,7 @@
                 },
                 {
                     "name": "",
-                    "id": "e99667f9-a717-47a9-935a-2129cf21f9db",
+                    "id": "201a1e6e-9611-415b-a853-fb69fcffda96",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
