@@ -1,41 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
-using Cinemachine;
 using UnityEngine.UI;
 
-
-public class MonedaTrigger : MonoBehaviour, Interactable
+public class KeypadTrigger : MonoBehaviour, Interactable
 {
-    public UnityEvent interactAction;
     public CinemachineVirtualCamera puzzleCam;
-    //private AudioSource sonido;
-    public GameObject puerta;
     public Image puntero;
-    public Renderer l1;
-    public Material lighton;
-    private void Start(){
-       // sonido=GetComponent<AudioSource>();
-    }
+    public GameObject puerta;
+
     public void Interact(){
         transform.gameObject.tag = "Untagged";
-        interactAction.Invoke();  
+        transform.GetComponent<BoxCollider>().enabled = false;
         puzzleCam.enabled = true;
         puntero.enabled = false;
-    }  
+        Cursor.lockState = CursorLockMode.Confined;
+    }
 
     public void Salir(){
         transform.gameObject.tag = "Interactable";
+        transform.GetComponent<BoxCollider>().enabled = true;
         puzzleCam.enabled = false;
         puntero.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Completado(){
-        puerta.SetActive(false);
-        l1.material = lighton;
-        //sonido.Play();
         puzzleCam.enabled = false;
         puntero.enabled = true;
+        puerta.SetActive(false);
     }
+
 }

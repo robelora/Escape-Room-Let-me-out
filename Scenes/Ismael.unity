@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -289,7 +289,7 @@ MonoBehaviour:
   exitPuzzle:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 387540539}
+      - m_Target: {fileID: 124712672}
         m_TargetAssemblyTypeName: PuzzleTrigger, Assembly-CSharp
         m_MethodName: Salir
         m_Mode: 1
@@ -405,11 +405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc39f6cc4bfd3542ac1c39fccd2cf79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m1: {fileID: 0}
-  m2: {fileID: 0}
-  m3: {fileID: 0}
-  m4: {fileID: 0}
-  m5: {fileID: 0}
   outlineMatHighlight: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
   outlineMatSelected: {fileID: 2100000, guid: f444040f3c9285549851c4f515b551df, type: 2}
   exitPuzzle:
@@ -653,6 +648,7 @@ MonoBehaviour:
         m_CallState: 2
   puzzleCam: {fileID: 675553729}
   puntero: {fileID: 0}
+  puerta: {fileID: 0}
 --- !u!1 &403162800
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +801,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  puerta: {fileID: 0}
+  l1: {fileID: 0}
+  lighton: {fileID: 0}
 --- !u!65 &440781086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5395,7 +5394,19 @@ MonoBehaviour:
     m_ActionId: 7d688c0d-6acf-44f1-80db-a5ce3e7a6a01
     m_ActionName: Explore/Interact[/XInputControllerWindows/buttonSouth,/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 124712674}
+        m_TargetAssemblyTypeName: Cubasdeagua, Assembly-CSharp
+        m_MethodName: PuzleMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3b478350-01a6-44f2-a0e4-697a6d763783
     m_ActionName: Puzzle/PuzzleMove[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/XInputControllerWindows/leftStick]
   - m_PersistentCalls:

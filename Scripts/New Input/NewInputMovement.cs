@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 
 public class NewInputMovement : MonoBehaviour
 {
@@ -20,8 +21,9 @@ public class NewInputMovement : MonoBehaviour
     private Vector3 velocity;
 
     //Movimiento Cámara
+    Vector2 cursor;
     private Vector2 camMovement;
-    private float mouseBaseSensitivity = 10f;
+    private float mouseBaseSensitivity = 5f;
     private float mouseCurrentSensitivity;
     private float xRotation = 0f;
 
@@ -37,6 +39,7 @@ public class NewInputMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         mouseCurrentSensitivity = mouseBaseSensitivity;
+        cursor = new Vector2(Screen.width, Screen.height)/2;
     }
 
     // Update is called once per frame
@@ -65,7 +68,7 @@ public class NewInputMovement : MonoBehaviour
             mouseCurrentSensitivity = mouseBaseSensitivity;
         }
         else if(playerInput.currentControlScheme == "Gamepad"){
-            mouseCurrentSensitivity = mouseBaseSensitivity * 10;
+            mouseCurrentSensitivity = mouseBaseSensitivity * 20;
         }
 
         float mouseX = camMovement.x * mouseCurrentSensitivity * Time.deltaTime;
@@ -76,5 +79,13 @@ public class NewInputMovement : MonoBehaviour
         
         playerCam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(0, mouseX, 0);
+
+        /* if(playerInput.currentActionMap == playerInput.actions.FindActionMap("Puzzle")){
+            cursor += camMovement * mouseBaseSensitivity;
+            cursor.x = Mathf.Clamp(cursor.x, 0, Screen.width);
+            cursor.y = Mathf.Clamp(cursor.y, 0, Screen.height);
+            Mouse.current.WarpCursorPosition(cursor);
+            InputState.Change(Mouse.current.position, cursor);
+        } */
     }
 }

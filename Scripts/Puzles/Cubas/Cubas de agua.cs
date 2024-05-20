@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class Cubasdeagua : MonoBehaviour
 {
+    private Vector2 puzleMovement;
     private Transform highlight;
     private Transform selected;
 
@@ -38,27 +39,6 @@ public class Cubasdeagua : MonoBehaviour
 
         cubaActual = 0;
         highlight = transform.GetChild(cubaActual).transform;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(isActive){
-            if(/*Gamepad.current.leftStick.left.wasPressedThisFrame || */Keyboard.current.aKey.wasPressedThisFrame){
-                if(selected != highlight){highlight.gameObject.GetComponent<Outline>().enabled = false;}
-                if(cubaActual == 0){cubaActual = 2;}
-                else{cubaActual--;}
-                highlight = transform.GetChild(cubaActual).transform;
-                setOutline(highlight);
-            }
-
-            if(/* Gamepad.current.leftStick.right.wasPressedThisFrame || */ Keyboard.current.dKey.wasPressedThisFrame){
-                if(selected != highlight){highlight.gameObject.GetComponent<Outline>().enabled = false;}
-                cubaActual = (cubaActual+1) % 3;
-                highlight = transform.GetChild(cubaActual).transform;
-                setOutline(highlight);
-            }
-        }
     }
 
     public void Activar(InputAction.CallbackContext callbackContext){
@@ -156,6 +136,28 @@ public class Cubasdeagua : MonoBehaviour
         }
         else{
             highlight.gameObject.GetComponent<Outline>().enabled = false;
+        }
+    }
+
+    public void PuzleMove(InputAction.CallbackContext callbackContext){
+        if(callbackContext.performed){
+            if(isActive){
+                puzleMovement = callbackContext.ReadValue<Vector2>();
+
+                if(puzleMovement.x < -0.4f){
+                    if(selected != highlight){highlight.gameObject.GetComponent<Outline>().enabled = false;}
+                    if(cubaActual == 0){cubaActual = 2;}
+                    else{cubaActual--;}
+                    highlight = transform.GetChild(cubaActual).transform;
+                    setOutline(highlight);
+                }
+                else if(puzleMovement.x > 0.4f){
+                    if(selected != highlight){highlight.gameObject.GetComponent<Outline>().enabled = false;}
+                    cubaActual = (cubaActual+1) % 3;
+                    highlight = transform.GetChild(cubaActual).transform;
+                    setOutline(highlight);
+                }
+            }
         }
     }
 }

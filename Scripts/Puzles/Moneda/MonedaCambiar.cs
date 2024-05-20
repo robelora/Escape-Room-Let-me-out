@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 
 public class MonedaCambiar : MonoBehaviour
 {
+    private Vector2 puzleMovement;
     private GameObject highlight;
     private GameObject selected;
     private GameObject m1,m2,m3,m4,m5;
@@ -32,8 +33,8 @@ public class MonedaCambiar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if(isActive){
-            if(/*Gamepad.current.leftStick.left.wasPressedThisFrame || */Keyboard.current.aKey.wasPressedThisFrame){
+        /*  if(isActive){
+            if(Gamepad.current.leftStick.left.wasPressedThisFrame ||Keyboard.current.aKey.wasPressedThisFrame){
                 if(selected != highlight){highlight.gameObject.GetComponent<Outline>().enabled = false;}
                 if(monedaActual == 0){monedaActual = 4;}
                 else{monedaActual--;}
@@ -41,13 +42,13 @@ public class MonedaCambiar : MonoBehaviour
                 setOutline(highlight);
             }
 
-            if(/* Gamepad.current.leftStick.right.wasPressedThisFrame || */ Keyboard.current.dKey.wasPressedThisFrame){
+            if(Gamepad.current.leftStick.right.wasPressedThisFrame || Keyboard.current.dKey.wasPressedThisFrame){
                 if(selected != highlight){highlight.gameObject.GetComponent<Outline>().enabled = false;}
                 monedaActual = (monedaActual+1) % 5;
                 highlight = transform.GetChild(monedaActual).gameObject;
                 setOutline(highlight);
             }
-        }
+        } */
     }
 
      public void setOutline(GameObject highlight){
@@ -96,11 +97,13 @@ public class MonedaCambiar : MonoBehaviour
                 selected.transform.position=posicion;
                 highlight.transform.SetSiblingIndex(index2);
                 selected.transform.SetSiblingIndex(index1);
-
                 
 
                 selected.gameObject.GetComponent<Outline>().OutlineColor = outlineMatHighlight.GetColor("_OutlineColor");
                 selected.gameObject.GetComponent<Outline>().enabled = false;
+                highlight.gameObject.GetComponent<Outline>().enabled = false;
+                highlight = selected;
+                setOutline(highlight);
                 selected = null;
 
                 //Debug.Log(m1==transform.GetChild(2).gameObject || m1==transform.GetChild(4).gameObject);
@@ -138,6 +141,28 @@ public class MonedaCambiar : MonoBehaviour
             SwitchActive();   
             exitPuzzle.Invoke();
             }
+    }
+
+    public void PuzleMove(InputAction.CallbackContext callbackContext){
+        if(callbackContext.performed){
+            if(isActive){
+                puzleMovement = callbackContext.ReadValue<Vector2>();
+
+                if(puzleMovement.x < -0.4f){
+                    if(selected != highlight){highlight.gameObject.GetComponent<Outline>().enabled = false;}
+                    if(monedaActual == 0){monedaActual = 4;}
+                    else{monedaActual--;}
+                    highlight = transform.GetChild(monedaActual).gameObject;
+                    setOutline(highlight);
+                }
+                else if(puzleMovement.x > 0.4f){
+                    if(selected != highlight){highlight.gameObject.GetComponent<Outline>().enabled = false;}
+                    monedaActual = (monedaActual+1) % 5;
+                    highlight = transform.GetChild(monedaActual).gameObject;
+                    setOutline(highlight);
+                }
+            }
+        }
     }
 }
 
