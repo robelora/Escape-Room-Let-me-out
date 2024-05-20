@@ -5,15 +5,11 @@ using UnityEngine.Events;
 
 public class AbrirPuerta : MonoBehaviour, Interactable
 {
-    bool puerta = false;
     public GameObject p;
  
     public void Interact(){
         transform.gameObject.tag = "Untagged";
-        if(puerta==false){
-            p.SetActive(false);
-            puerta=true;        
-        }  
+        p.SetActive(false);
     }  
 /*
 GameObject p1,p2,b1,b2;

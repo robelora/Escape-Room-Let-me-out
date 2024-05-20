@@ -10,7 +10,7 @@ public class MonedaCambiar : MonoBehaviour
 {
     private GameObject highlight;
     private GameObject selected;
-    public GameObject m1,m2,m3,m4,m5;
+    private GameObject m1,m2,m3,m4,m5;
     private int monedaActual;
     private bool isActive;
     public Material outlineMatHighlight;
@@ -120,7 +120,6 @@ public class MonedaCambiar : MonoBehaviour
             if(m2.GetComponent<valoresMoneda>().posicionActual==m2.GetComponent<valoresMoneda>().posicionCorrecta &&
             m3.GetComponent<valoresMoneda>().posicionActual==m3.GetComponent<valoresMoneda>().posicionCorrecta &&
             m5.GetComponent<valoresMoneda>().posicionActual==m5.GetComponent<valoresMoneda>().posicionCorrecta){
-                Debug.Log("bienpicha");
                 Completado();
             }
         }

@@ -9,7 +9,7 @@ public class MonedaTrigger : MonoBehaviour, Interactable
 {
     public UnityEvent interactAction;
     //public CinemachineVirtualCamera puzzleCam;
-
+    public GameObject puerta;
     public void Interact(){
         transform.gameObject.tag = "Untagged";
         interactAction.Invoke();  
@@ -22,6 +22,7 @@ public class MonedaTrigger : MonoBehaviour, Interactable
     }
 
     public void Completado(){
+        puerta.SetActive(false);
         //puzzleCam.enabled = false;
     }
 }

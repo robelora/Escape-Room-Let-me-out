@@ -10,6 +10,7 @@ public class CubasTrigger : MonoBehaviour, Interactable
     public UnityEvent interactAction;
     public CinemachineVirtualCamera puzzleCam;
     public Image puntero;
+    public GameObject puerta;
 
     public void Interact(){
         transform.gameObject.tag = "Untagged";
@@ -27,6 +28,7 @@ public class CubasTrigger : MonoBehaviour, Interactable
     public void Completado(){
         puzzleCam.enabled = false;
         puntero.enabled = true;
+        puerta.SetActive(false);
     }
 
 }
