@@ -81,12 +81,7 @@ public class ObjectSelection : MonoBehaviour
     public void Salir(InputAction.CallbackContext callbackContext){
         if(callbackContext.performed && playerInput.currentActionMap == playerInput.actions.FindActionMap("Puzzle")){
             playerInput.SwitchCurrentActionMap("Explore");
-            Debug.Log("Salir");
             exitPuzzle.Invoke();
         }
-    }
-
-    public void PuzleCompletado(){
-        playerInput.SwitchCurrentActionMap("Explore");
     }
 }

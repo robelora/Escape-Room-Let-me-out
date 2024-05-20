@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
-public class AbrirPuerta : MonoBehaviour, Interactable
+public class AbrirPuerta : MonoBehaviour
 {
-    public GameObject p;
- 
-    public void Interact(){
-        transform.gameObject.tag = "Untagged";
-        p.SetActive(false);
-    }  
-/*
-GameObject p1,p2,b1,b2;
+    bool puerta1 = false;
+    bool puerta2 = false;
+
+    GameObject p1,p2,b1,b2;
 
     void Start(){
         b1=GameObject.Find("Boton1");
@@ -20,13 +16,14 @@ GameObject p1,p2,b1,b2;
         p1=GameObject.Find("Puerta1");
         p2=GameObject.Find("Puerta2");
     }
+
     void Update(){
         Abrirpuerta();
     }
     
-      
+        
     public void Abrirpuerta(){
-        if(Input.GetKeyDown(KeyCode.E)){
+        if(Keyboard.current.eKey.wasPressedThisFrame){
             if(puerta1==false){
                 p1.SetActive(false);
                 puerta1=true;
@@ -41,6 +38,6 @@ GameObject p1,p2,b1,b2;
                 else{}
             }
         }
-    }*/
+    }
 
 }
