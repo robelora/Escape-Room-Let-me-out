@@ -14,12 +14,12 @@ public class Movimiento_torre : MonoBehaviour
     private float rotationAngle = 90f;
     private float rotationSpeed = 100f;
     private bool isRotating = false;
-    private string targetTag = "Interactable";
     private bool isActive = false;
     private Vector2 puzleMovement;
     public Material connected;
     public Material outlineMatHighlight;
     public UnityEvent exitPuzzle;
+    public UnityEvent completePuzzle;
 
 
     void Start(){
@@ -27,38 +27,6 @@ public class Movimiento_torre : MonoBehaviour
         piso_seleccionado = 0;
         highlight = transform.GetChild(piso_seleccionado).transform;
     }
-
-    /* void Update()
-    {
-        string tag;
-        tag = highlight.gameObject.tag;
-        // Mover hacia arriba
-        if(!isRotating && Keyboard.current.wKey.wasPressedThisFrame){
-            if (piso_seleccionado < transform.childCount - 1){
-                piso_seleccionado++;
-                highlight.gameObject.GetComponent<Outline>().enabled = false;
-                highlight = transform.GetChild(piso_seleccionado).transform;
-                setOutline(highlight);
-            }
-        }
-        // Mover hacia abajo
-        if(!isRotating && Keyboard.current.sKey.wasPressedThisFrame){
-            if (piso_seleccionado > 0){
-                piso_seleccionado--;
-                highlight.gameObject.GetComponent<Outline>().enabled = false;
-                highlight = transform.GetChild(piso_seleccionado).transform;
-                setOutline(highlight);
-            }
-        }
-        // Girar Izquierda
-        if(tag == targetTag && !isRotating && Keyboard.current.aKey.wasPressedThisFrame){
-            StartCoroutine(RotateOverTime(highlight, Vector3.up, rotationAngle));
-        }
-        // Girar Derecha
-        else if(tag == targetTag && !isRotating && Keyboard.current.dKey.wasPressedThisFrame){
-            StartCoroutine(RotateOverTime(highlight, Vector3.up, -rotationAngle));
-        }
-    } */
 
     private IEnumerator RotateOverTime(Transform highlight ,Vector3 axis, float angle)
     {
@@ -95,6 +63,8 @@ public class Movimiento_torre : MonoBehaviour
             // en GetChild(2) se encuenta el empty Fin del piso 7
             piso_final.transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = connected;
             piso_final.transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Renderer>().material = connected;
+            SwitchActive();
+            completePuzzle.Invoke();
         }
     }
 
