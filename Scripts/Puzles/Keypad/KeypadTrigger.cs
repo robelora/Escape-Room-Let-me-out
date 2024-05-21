@@ -28,6 +28,7 @@ public class KeypadTrigger : MonoBehaviour, Interactable
     }
 
     public void Completado(){
+        Cursor.lockState = CursorLockMode.Locked;
         puzzleCam.enabled = false;
         puntero.enabled = true;
         puerta.SetActive(false);
