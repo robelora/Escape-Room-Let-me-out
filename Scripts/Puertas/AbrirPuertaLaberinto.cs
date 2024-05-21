@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AbrirPuertaLaberinto : MonoBehaviour, Interactable
 {
@@ -9,9 +10,11 @@ public class AbrirPuertaLaberinto : MonoBehaviour, Interactable
     public Renderer l1,l2,l3;
     static int activos = 0;
     public Material lighton;
+    public UnityEvent exitPuzzle;
    
    public void Interact(){
         transform.gameObject.tag = "Untagged";
+        exitPuzzle.Invoke();
         activos++;
         if(activos==1)
             l1.material = lighton;

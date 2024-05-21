@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class TorreTrigger : MonoBehaviour, Interactable
 {
+    public GameObject Papel;
     public UnityEvent interactAction;
     public CinemachineVirtualCamera puzzleCam;
     public Image puntero;
@@ -25,7 +26,7 @@ public class TorreTrigger : MonoBehaviour, Interactable
     }
 
     public void Completado(){
-        Debug.Log("Minijuego Torre Completado.");
+        Papel.SetActive(true);
         puzzleCam.enabled = false;
         puntero.enabled = true;
     }

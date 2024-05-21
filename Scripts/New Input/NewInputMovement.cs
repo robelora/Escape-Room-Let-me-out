@@ -23,8 +23,8 @@ public class NewInputMovement : MonoBehaviour
     //Movimiento Cámara
     Vector2 cursor;
     private Vector2 camMovement;
-    private float mouseBaseSensitivity = 5f;
-    private float mouseCurrentSensitivity;
+    private Vector2 prevCamMovement;
+    private float Sensitivity = 5f;
     private float xRotation = 0f;
 
     public Transform playerCam;
@@ -38,7 +38,6 @@ public class NewInputMovement : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
-        mouseCurrentSensitivity = mouseBaseSensitivity;
         cursor = new Vector2(Screen.width, Screen.height)/2;
     }
 
@@ -64,15 +63,8 @@ public class NewInputMovement : MonoBehaviour
         }
 
         //Movimiento cámara
-        if(playerInput.currentControlScheme == "Keyboard"){
-            mouseCurrentSensitivity = mouseBaseSensitivity;
-        }
-        else if(playerInput.currentControlScheme == "Gamepad"){
-            mouseCurrentSensitivity = mouseBaseSensitivity * 20;
-        }
-
-        float mouseX = camMovement.x * mouseCurrentSensitivity * Time.deltaTime;
-        float mouseY = camMovement.y * mouseCurrentSensitivity * Time.deltaTime;
+        float mouseX = camMovement.x * Sensitivity * Time.deltaTime;
+        float mouseY = camMovement.y * Sensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
@@ -80,12 +72,9 @@ public class NewInputMovement : MonoBehaviour
         playerCam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(0, mouseX, 0);
 
-        /* if(playerInput.currentActionMap == playerInput.actions.FindActionMap("Puzzle")){
-            cursor += camMovement * mouseBaseSensitivity;
-            cursor.x = Mathf.Clamp(cursor.x, 0, Screen.width);
-            cursor.y = Mathf.Clamp(cursor.y, 0, Screen.height);
+        if(playerInput.currentActionMap == playerInput.actions.FindActionMap("Puzzle") && playerInput.currentControlScheme == "Gamepad"){
+            cursor += camMovement * Sensitivity;
             Mouse.current.WarpCursorPosition(cursor);
-            InputState.Change(Mouse.current.position, cursor);
-        } */
+        }
     }
 }

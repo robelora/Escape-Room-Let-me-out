@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pausa",
+                    "type": "Button",
+                    "id": "f268ab9f-0148-4f19-acec-6240b9fb722e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -182,7 +191,7 @@
                     "id": "4f210a19-c4f7-49de-90d0-ccb81647ed53",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=20,y=20)",
                     "groups": "Gamepad",
                     "action": "CamMove",
                     "isComposite": false,
@@ -196,6 +205,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "CamMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b220a360-da5c-472f-9d44-8768071d12a5",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pausa",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef4bc37a-a534-4cc1-93f8-10881ad753a6",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Pausa",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -236,6 +267,15 @@
                     "name": "ExitPuzzle",
                     "type": "Button",
                     "id": "64ec9ef0-0dc0-4010-80e3-b6869d785613",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pausa",
+                    "type": "Button",
+                    "id": "f0f8735b-bae7-4e47-a599-c59c8c215e39",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -427,6 +467,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "ExitPuzzle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "46bbe182-d023-41bb-bf9c-f99a0b61cd27",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Pausa",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "84b21a39-ddef-489a-b986-7cfcb10aeb5f",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pausa",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
