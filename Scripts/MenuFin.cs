@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuFin : MonoBehaviour
 {
@@ -14,6 +15,6 @@ public class MenuFin : MonoBehaviour
 
     public void QuitGame(){
         Debug.Log("Fin.Pa casa.");
-        Application.Quit();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

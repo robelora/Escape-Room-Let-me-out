@@ -9,6 +9,7 @@ public class Menuprincipal : MonoBehaviour
     // Este método se llama cuando se hace clic en el botón de "Jugar"
     public void Jugar()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
